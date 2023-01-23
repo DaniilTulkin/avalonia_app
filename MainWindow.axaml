@@ -4,6 +4,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="avalonia_app.MainWindow"
-        Title="avalonia_app">
-    Welcome to Avalonia!
+        Title="avalonia_app"
+		Width="1048"
+		Height="630">
+	<Window.Styles>
+		
+	</Window.Styles>
+	<Grid RowDefinitions=" Auto, *, Auto">
+		<!-- Title bar -->
+		<Grid Grid.Row="0"
+			  ColumnDefinitions=" Auto, Auto, *, Auto, Auto"
+			  Background="Orange"
+			  Height="40">
+			<Rectangle Grid.Column="0"
+					   Fill="Blue"
+					   Width="40" />
+			<Rectangle Grid.Column="1"
+					   Fill="Red"
+					   Width="40" />
+			<StackPanel Grid.Column="2"
+						Orientation="Horizontal"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center">
+				<Label FontWeight="Black">Avalonia</Label>
+				<Label>LOUDNESS METER</Label>
+			</StackPanel>
+			<Rectangle Grid.Column="3"
+					   Fill="Blue"
+					   Width="40" />
+			<Rectangle Grid.Column="4"
+					   Fill="Red"
+					   Width="40" />
+		</Grid>
+
+		<!-- Main area -->
+		<Grid Grid.Row="1"
+			  ColumnDefinitions="Auto, Auto, *"
+			  Background="#1a1c20">
+
+			<!-- Volume bar -->
+			<Grid Grid.Column="0"
+				  RowDefinitions="*, Auto, Auto"
+				  Width="150"
+				  Margin="0 20">
+
+				<!-- Volume meter-->
+				<Grid Grid.Column="0"
+					  RowDefinitions="3*, 3*, 3*, 9*, 5*, 4*, 9*, 9*, 9*, 6*, Auto">
+					<Grid.Styles>
+						<Style Selector="Label">
+							<Setter Property="Foreground"
+									Value="White" />
+							<Setter Property="FontSize"
+									Value="12" />
+						</Style>
+					</Grid.Styles>
+					<Label Grid.Row="0">0-</Label>
+					<Label Grid.Row="1">-3-</Label>
+					<Label Grid.Row="2">-6-</Label>
+					<Label Grid.Row="3">-9-</Label>
+					<Label Grid.Row="4">-18-</Label>
+					<Label Grid.Row="5">-23-</Label>
+					<Label Grid.Row="6">-27-</Label>
+					<Label Grid.Row="7">-36-</Label>
+					<Label Grid.Row="8">-45-</Label>
+					<Label Grid.Row="9">-54-</Label>
+					<Label Grid.Row="10"></Label>
+				</Grid>
+
+				<!-- LUFC label-->
+				<Label Grid.Row="1"
+					   Foreground="White"
+					   FontSize="20"
+					   HorizontalAlignment="Center"
+					   Margin="0 5">
+					LUFC
+				</Label>
+
+				<!-- Volume bar buttons -->
+				<StackPanel Grid.Row="2"
+							Orientation="Horizontal"
+							HorizontalAlignment="Center">
+					<StackPanel.Styles>
+						<Style Selector="Button">
+							<Setter Property="FontSize"
+									Value="12" />
+							<Setter Property="Foreground"
+									Value="White" />
+							<Setter Property="Background"
+									Value="#7f98c7" />
+							<Setter Property="CornerRadius" 
+									Value="20" />
+							<Setter Property="Padding" 
+									Value="7 2" />
+						</Style>
+					</StackPanel.Styles>
+					<Button Margin="0 0 20 0">A</Button>
+					<Button>INT-LRA</Button>
+				</StackPanel>
+			</Grid>
+
+			<!-- Details panel -->
+			<Rectangle Grid.Column="1"
+					   Fill="Gray"
+					   Width="140" />
+
+			<!-- Details panel -->
+			<Rectangle Grid.Column="2"
+					   Fill="Green" />
+		</Grid>
+
+		<!-- Bottom area -->
+		<Grid Grid.Row="2"
+			  ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto, Auto"
+			  Margin="8">
+			<Button Grid.Column="0"
+					Margin="0 0 8 0">
+				Stereo
+			</Button>
+			<Button Grid.Column="1">YouTube</Button>
+			<Button Grid.Column="3"
+					Margin="0 0 8 0">
+				10 sec
+			</Button>
+			<Button Grid.Column="4"
+					Margin="0 0 8 0">
+				CONTINUOUS
+			</Button>
+			<Rectangle Grid.Column="5"
+					   Fill="Orange"
+					   Width="30"
+					   Margin="0 0 8 0"/>
+			<Rectangle Grid.Column="6"
+					   Fill="Orange"
+					   Width="30"
+					   Margin="0 0 8 0"/>
+		</Grid>
+	</Grid>
 </Window>
