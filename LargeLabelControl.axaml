@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:avalonia_app">
+  <Design.PreviewWith>
+	  <StackPanel>
+		  <controls:LargeLabelControl />
+		  <controls:LargeLabelControl Classes="button" />
+	  </StackPanel>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|LargeLabelControl">
+    <!-- Set Defaults -->
+	<Setter Property="Foreground"
+			Value="White"/>
+	<Setter Property="Background"
+			Value="{DynamicResource MidBlueBrush}"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+		  <Border Background="{TemplateBinding Background}"
+				  Padding="15 7">
+		      <StackPanel>
+			      <Label Content="{TemplateBinding LargeText}"
+						 Padding="0"
+						 FontSize="21"
+						 HorizontalAlignment="Center"/>
+			      <Label Content="{TemplateBinding LargeText}"
+						 Padding="0"
+						 FontSize="11"
+						 HorizontalAlignment="Center"/>
+		      </StackPanel>
+		  </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+	<Style Selector="controls|LargeLabelControl.button">
+		<!-- Set Defaults -->
+		<Setter Property="Foreground"
+				Value="White"/>
+		<Setter Property="Background"
+				Value="{DynamicResource MidBlueBrush}"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<StackPanel>
+					<Label Content="{TemplateBinding LargeText}"
+							FontSize="21"
+						   Padding="15 3"
+							Background="{TemplateBinding Background}"
+						   CornerRadius="20"
+							HorizontalAlignment="Center"/>
+					<Label Content="{TemplateBinding LargeText}"
+							Padding="0"
+							FontSize="11"
+						   Margin="0 5 0 5"
+							HorizontalAlignment="Center"/>
+				</StackPanel>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>

@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="clr-namespace:avalonia_app;assembly=avalonia_app"
         mc:Ignorable="d"
 		d:DesignWidth="1048"
 		d:DesignHeight="630"
@@ -10,20 +11,74 @@
 		Width="1048"
 		Height="630">
 	<Window.Styles>
-
+		<Style Selector="Button.small">
+			<Setter Property="FontSize"
+					Value="12" />
+			<Setter Property="Foreground"
+					Value="White" />
+			<Setter Property="Background"
+					Value="#7f98c7" />
+			<Setter Property="CornerRadius"
+					Value="20" />
+			<Setter Property="Padding"
+					Value="7 2" />
+		</Style>
+		<Style Selector="Button:pointerover /template/ ContentPresenter">
+			<Setter Property="Background"
+					Value="#98acd0" />
+			<Setter Property="TextBlock.Foreground"
+					Value="White" />
+		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions=" Auto, *, Auto">
+		
 		<!-- Title bar -->
 		<Grid Grid.Row="0"
 			  ColumnDefinitions=" Auto, Auto, *, Auto, Auto"
-			  Background="Orange"
+			  Background="{DynamicResource MediumGrayBrush}"
 			  Height="40">
-			<Rectangle Grid.Column="0"
-					   Fill="Blue"
-					   Width="40" />
-			<Rectangle Grid.Column="1"
-					   Fill="Red"
-					   Width="40" />
+			<Grid.Styles>
+				<Style Selector="Button">
+					<Setter Property="Background"
+							Value="Transparent" />
+					<Setter Property="Width"
+							Value="40" />
+				</Style>
+				<Style Selector="Button Image">
+					<Setter Property="Width"
+							Value="25" /> 
+				</Style>
+				<Style Selector="Button /template/ ContentPresenter">
+					<Setter Property="Transitions">
+						<Transitions>
+							<TransformOperationsTransition Property="RenderTransform"
+														   Duration="0:0:0.2" />
+						</Transitions>
+					</Setter>
+				</Style>
+				<Style Selector="Button:pointerover /template/ ContentPresenter">
+					<Setter Property="Background"
+							Value="Transparent" />
+					<Setter Property="RenderTransform"
+							Value="scale(1.11)" />
+					<Setter Property="Opacity"
+							Value="0.6" />
+					<Setter Property="Transitions">
+						<Setter.Value>
+							<Transitions>
+								<TransformOperationsTransition Property="RenderTransform"
+															   Duration="0:0:2" />
+							</Transitions>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</Grid.Styles>
+			<Button Grid.Column="0">
+				<Image Source="/Assets/Images/Monitor.png" />
+			</Button>
+			<Button Grid.Column="1">
+				<Image Source="/Assets/Images/Lock.png" />
+			</Button>
 			<StackPanel Grid.Column="2"
 						Orientation="Horizontal"
 						VerticalAlignment="Center"
@@ -31,12 +86,12 @@
 				<Label FontWeight="Black">Avalonia</Label>
 				<Label>LOUDNESS METER</Label>
 			</StackPanel>
-			<Rectangle Grid.Column="3"
-					   Fill="Blue"
-					   Width="40" />
-			<Rectangle Grid.Column="4"
-					   Fill="Red"
-					   Width="40" />
+			<Button Grid.Column="3">
+				<Image Source="/Assets/Images/Export.png" />
+			</Button>
+			<Button Grid.Column="4">
+				<Image Source="/Assets/Images/Cog.png" />
+			</Button>
 		</Grid>
 
 		<!-- Main area -->
@@ -134,31 +189,41 @@
 				<StackPanel Grid.Row="2"
 							Orientation="Horizontal"
 							HorizontalAlignment="Center">
-					<StackPanel.Styles>
-						<Style Selector="Button">
-							<Setter Property="FontSize"
-									Value="12" />
-							<Setter Property="Foreground"
-									Value="White" />
-							<Setter Property="Background"
-									Value="#7f98c7" />
-							<Setter Property="CornerRadius"
-									Value="20" />
-							<Setter Property="Padding"
-									Value="7 2" />
-						</Style>
-					</StackPanel.Styles>
-					<Button Margin="0 0 20 0">A</Button>
-					<Button>INT-LRA</Button>
+					<Button Classes="small"
+							Margin="0 0 20 0"
+							Padding="3"
+							Width="30"
+							Height="30"
+							CornerRadius="30">
+						<Image Source="/Assets/Images/DoubleArrow.png"
+							   Margin="5 0 2 0"/>
+					</Button>
+					<Button Classes="small">INT-LRA</Button>
 				</StackPanel>
 			</Grid>
 
 			<!-- Details panel -->
-			<Rectangle Grid.Column="1"
-					   Fill="Gray"
-					   Width="140" />
+			<StackPanel Grid.Column="1"
+						Width="170"
+						Margin="0 15 10 15">
+				<controls:LargeLabelControl LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl LargeText="Hello" SmallText="small" Margin="0 0 0 13" />
+				
+				<controls:LargeLabelControl Classes="button" LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl Classes="button" LargeText="Hello" SmallText="small" />
+				<controls:LargeLabelControl Classes="button" LargeText="Hello" SmallText="small" Margin="0 0 0 13" />
 
-			<!-- Details panel -->
+				<StackPanel Orientation="Horizontal"
+							HorizontalAlignment="Center">
+					<Button Classes="small" Margin="0 0 20 0">AUTO</Button>
+					<Button Classes="small" FontSize="20" Background="red">X</Button>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Main panel -->
 			<Rectangle Grid.Column="2"
 					   Fill="Green" />
 		</Grid>
