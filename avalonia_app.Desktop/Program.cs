@@ -1,7 +1,8 @@
-﻿using Avalonia;
-using System;
+﻿using System;
+using Avalonia;
+using Avalonia.ReactiveUI;
 
-namespace avalonia_app;
+namespace avalonia_app.Desktop;
 
 class Program
 {
@@ -16,5 +17,6 @@ class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
-            .LogToTrace();
+            .LogToTrace()
+            .UseReactiveUI();
 }
